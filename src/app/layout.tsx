@@ -37,9 +37,11 @@ export default function RootLayout({
               Anime Origins Wiki
             </a>
             <nav className="flex items-center space-x-6 text-sm font-medium">
-              <a href="/codes" className="hover:text-cyan-400">Codes</a>
-              <a href="/tier-list" className="hover:text-cyan-400">Tier List</a>
-              <a href="/trait-simulator" className="text-purple-400 hover:text-purple-300 font-bold">🎲 Trait Simulator</a>
+              <a href="/codes" className="hover:text-amber-400">Codes</a>
+              <a href="/tier-list" className="hover:text-amber-400">Tier List</a>
+              <a href="/trait-simulator" className="hover:text-amber-400">🎲 Trait Sim</a>
+              <a href="/evolution-guide" className="hover:text-amber-400">⬆️ Evolution</a>
+              <a href="/beginner-guide" className="hover:text-amber-400">📖 Guide</a>
               <a href="https://robloxwikihub.com" className="text-xs text-slate-400 hover:text-slate-200 bg-slate-800 px-3 py-1.5 rounded-full">Roblox Wiki Hub</a>
             </nav>
           </div>
