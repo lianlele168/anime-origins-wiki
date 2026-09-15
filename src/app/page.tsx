@@ -1,5 +1,7 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
+import AuthorCard from '@/components/AuthorCard';
 
 export default function HomePage() {
   const [copied, setCopied] = useState('');
@@ -39,6 +41,38 @@ export default function HomePage() {
           </a>
         </div>
       </section>
+
+      {/* E-E-A-T AUTHOR VERIFICATION */}
+      <AuthorCard />
+
+      {/* VISUAL GAMEPLAY SHOWCASE */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+        <div className="rounded-2xl overflow-hidden border border-cyan-900/60 bg-cyan-950/40 p-4">
+          <Image
+            src="/images/origins-header.webp"
+            alt="Anime Origins Official Roblox Icon"
+            width={512}
+            height={512}
+            className="rounded-xl object-cover w-full h-56 border border-cyan-800/40"
+            priority
+          />
+          <p className="text-xs text-cyan-300 mt-2.5 text-center font-medium">
+            Figure 1: Official Anime Origins Icon.
+          </p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-cyan-900/60 bg-cyan-950/40 p-4">
+          <Image
+            src="/images/origins-gameplay.webp"
+            alt="Anime Origins Battle Arena Gameplay"
+            width={768}
+            height={432}
+            className="rounded-xl object-cover w-full h-56 border border-cyan-800/40"
+          />
+          <p className="text-xs text-cyan-300 mt-2.5 text-center font-medium">
+            Figure 2: Active Combat Arena with High-Tier Anime Unit Placement.
+          </p>
+        </div>
+      </div>
 
       {/* Tool Nav Cards */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-5">

@@ -1,7 +1,10 @@
 {
   "/_global-error/page": "app/_global-error/page.js",
   "/_not-found/page": "app/_not-found/page.js",
+  "/beginner-guide/page": "app/beginner-guide/page.js",
+  "/calculator/page": "app/calculator/page.js",
   "/codes/page": "app/codes/page.js",
+  "/evolution-guide/page": "app/evolution-guide/page.js",
   "/page": "app/page.js",
   "/robots.txt/route": "app/robots.txt/route.js",
   "/sitemap.xml/route": "app/sitemap.xml/route.js",

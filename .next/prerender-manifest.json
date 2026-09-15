@@ -5,7 +5,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 14966,
+      "htmlSize": 18930,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -62,7 +62,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 12899,
+      "htmlSize": 13065,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -86,11 +86,67 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/beginner-guide": {
+      "routeType": "page",
+      "response": "complete",
+      "compute": "static",
+      "htmlSize": 23231,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/beginner-guide",
+      "dataRoute": "/beginner-guide.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/calculator": {
+      "routeType": "page",
+      "response": "complete",
+      "compute": "static",
+      "htmlSize": 22798,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/calculator",
+      "dataRoute": "/calculator.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/codes": {
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 18609,
+      "htmlSize": 18803,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -105,6 +161,34 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/codes",
       "dataRoute": "/codes.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/evolution-guide": {
+      "routeType": "page",
+      "response": "complete",
+      "compute": "static",
+      "htmlSize": 26043,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/evolution-guide",
+      "dataRoute": "/evolution-guide.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -182,7 +266,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 13591,
+      "htmlSize": 13759,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -210,7 +294,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 12607,
+      "htmlSize": 12762,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -238,8 +322,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "68a4c4469ba253c3f5930a79a05afcef",
-    "previewModeSigningKey": "79eef7f4c2d79101305c8fea2784dac5229584bc2ad9ddf5a2f21d2481248e5c",
-    "previewModeEncryptionKey": "6463863d3247f0fd150116680d6c8c3477bd1b5fd1d2f7b9fd3ff379f4b19123"
+    "previewModeId": "3a7a8351e45049e886eed61efe9e9b76",
+    "previewModeSigningKey": "9643b1c7afa3d0f288ca0f2f85e23953c97fe47e198bcce8f036adc4ae51b973",
+    "previewModeEncryptionKey": "1b272cb23d875a5bdb1ff2bcdde6cfdbcfd22d411789409c83773b8c156db9fe"
   }
 }

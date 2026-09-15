@@ -6,9 +6,6 @@ export const metadata: Metadata = {
   title: "Anime Origins Wiki — 2026 Codes, Trait Simulator & Tier List",
   description: "The ultimate Anime Origins Roblox guide — Unit Tier List, Active Redeem Codes, Trait Reroll Simulator, and Evolution Recipes.",
   keywords: ["Anime Origins", "Anime Origins codes", "Anime Origins wiki", "Anime Origins tier list", "Roblox"],
-  alternates: {
-    canonical: "https://animeorigins.robloxwikihub.com",
-  },
   robots: {
     index: true,
     follow: true,

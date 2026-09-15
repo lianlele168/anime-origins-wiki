@@ -42,10 +42,28 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/beginner-guide",
+      "regex": "^/beginner\\-guide(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/beginner\\-guide(?:/)?$"
+    },
+    {
+      "page": "/calculator",
+      "regex": "^/calculator(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/calculator(?:/)?$"
+    },
+    {
       "page": "/codes",
       "regex": "^/codes(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/codes(?:/)?$"
+    },
+    {
+      "page": "/evolution-guide",
+      "regex": "^/evolution\\-guide(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/evolution\\-guide(?:/)?$"
     },
     {
       "page": "/robots.txt",
