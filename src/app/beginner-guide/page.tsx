@@ -1,3 +1,14 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Anime Origins Beginner Guide & Progression Tips (September 2026)',
+  description: 'Essential starter walkthrough for Anime Origins on Roblox. Learn unit summon strategies, trait prioritization, and rapid level progression.',
+  alternates: {
+    canonical: '/beginner-guide',
+  },
+  keywords: ['anime origins beginner guide', 'anime origins tips', 'anime origins walkthrough'],
+};
+
 export default function BeginnerGuidePage() {
   const tips = [
     { step: "1", title: "Pick Your Starter Unit", desc: "Choose a unit that fits your playstyle. Summoner types are best for beginners — high HP and AoE damage.", icon: "⚔️" },

@@ -35,6 +35,7 @@ export default function RootLayout({
             </a>
             <nav className="flex items-center space-x-6 text-sm font-medium">
               <a href="/codes" className="hover:text-amber-400">Codes</a>
+              <a href="/calculator" className="hover:text-amber-400">Calculator</a>
               <a href="/tier-list" className="hover:text-amber-400">Tier List</a>
               <a href="/trait-simulator" className="hover:text-amber-400">🎲 Trait Sim</a>
               <a href="/evolution-guide" className="hover:text-amber-400">⬆️ Evolution</a>

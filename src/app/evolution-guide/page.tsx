@@ -1,3 +1,14 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Anime Origins Evolution Guide & Unit Recipes (September 2026)',
+  description: 'All unit evolution recipes, material requirements, and stat boosts in Anime Origins. How to evolve Cursed Lover to Cursed Overlord and more.',
+  alternates: {
+    canonical: '/evolution-guide',
+  },
+  keywords: ['anime origins evolution guide', 'anime origins recipes', 'how to evolve units anime origins'],
+};
+
 export default function EvolutionGuidePage() {
   const recipes = [
     { unit: "Cursed Lover", evolved: "Cursed Overlord", mats: ["Cursed Core x3", "Shadow Shard x5", "Demon Essence x1"], statBoost: "+110% DMG, +80% HP", tier: "S+" },
