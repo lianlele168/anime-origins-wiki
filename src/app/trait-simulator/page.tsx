@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import TraitSimulatorClient from './TraitSimulatorClient';
 
 export const metadata: Metadata = {
-  title: 'Anime Origins Trait Reroll Simulator (September 2026)',
+  title: 'Anime Origins Trait Reroll Simulator ',
   description: 'Simulate trait rerolls in Anime Origins. Test your luck for Monarch (+150% DMG) and Godly (+100% DMG) traits with exact roll odds.',
   alternates: {
     canonical: '/trait-simulator',

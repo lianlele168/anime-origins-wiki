@@ -25,7 +25,7 @@ export default function AuthorCard() {
         <div className="flex flex-wrap items-center gap-3 text-xs text-cyan-300">
           <div className="flex items-center gap-1 bg-cyan-900/50 px-2.5 py-1 rounded-lg border border-cyan-800/40">
             <Calendar className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Updated: September 2026</span>
+            <span>Updated: </span>
           </div>
           <div className="flex items-center gap-1 bg-cyan-900/50 px-2.5 py-1 rounded-lg border border-cyan-800/40">
             <UserCheck className="w-3.5 h-3.5 text-indigo-400" />

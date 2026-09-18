@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Anime Origins Codes (September 2026) — Active Rewards & Gems',
-  description: 'Full list of active working Anime Origins redeem codes for September 2026. Claim free Gems, Trait Rerolls, and Stat Prisms.',
+  title: 'Anime Origins Codes — Active Rewards & Gems',
+  description: 'Full list of active working Anime Origins redeem codes for . Claim free Gems, Trait Rerolls, and Stat Prisms.',
   alternates: {
     canonical: '/codes',
   },
-  keywords: ['anime origins codes', 'anime origins codes september 2026', 'anime origins reroll codes'],
+  keywords: ['anime origins codes', 'anime origins codes ', 'anime origins reroll codes'],
 };
 
 export default function CodesPage() {
   return (
     <div className="space-y-6">
       <div className="border-b border-slate-800 pb-4">
-        <h1 className="text-3xl font-black text-white">Anime Origins Codes (September 2026)</h1>
+        <h1 className="text-3xl font-black text-white">Anime Origins Codes </h1>
         <p className="text-slate-400 text-sm mt-1">Tested and verified active redeem codes for Anime Origins.</p>
       </div>
 

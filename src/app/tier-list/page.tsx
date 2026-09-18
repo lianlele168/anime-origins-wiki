@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Anime Origins Unit Tier List (September 2026) — Meta Rankings',
+  title: 'Anime Origins Unit Tier List — Meta Rankings',
   description: 'Complete Anime Origins unit tier list ranking top meta DPS, debuffers, and raid supports from S+ to B tier.',
   alternates: {
     canonical: '/tier-list',
@@ -14,7 +14,7 @@ export default function TierListPage() {
     <div className="space-y-6">
       <div className="border-b border-slate-800 pb-4">
         <h1 className="text-3xl font-black text-white">Anime Origins Meta Tier List</h1>
-        <p className="text-slate-400 text-sm mt-1">Official community meta rankings and tier ratings for September 2026.</p>
+        <p className="text-slate-400 text-sm mt-1">Official community meta rankings and tier ratings for .</p>
       </div>
 
       <div className="grid gap-4">

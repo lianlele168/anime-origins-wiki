@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Anime Origins Evolution Guide & Unit Recipes (September 2026)',
+  title: 'Anime Origins Evolution Guide & Unit Recipes ',
   description: 'All unit evolution recipes, material requirements, and stat boosts in Anime Origins. How to evolve Cursed Lover to Cursed Overlord and more.',
   alternates: {
     canonical: '/evolution-guide',

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Anime Origins Beginner Guide & Progression Tips (September 2026)',
+  title: 'Anime Origins Beginner Guide & Progression Tips ',
   description: 'Essential starter walkthrough for Anime Origins on Roblox. Learn unit summon strategies, trait prioritization, and rapid level progression.',
   alternates: {
     canonical: '/beginner-guide',

@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import CalculatorClient from './CalculatorClient';
 
 export const metadata: Metadata = {
-  title: 'Anime Origins Unit DPS & Trait Calculator (September 2026)',
+  title: 'Anime Origins Unit DPS & Trait Calculator ',
   description: 'Calculate unit damage, speed per attack (SPA), level progression, and trait multipliers in Anime Origins.',
   alternates: {
     canonical: '/calculator',
