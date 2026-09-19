@@ -74,10 +74,10 @@ export const EVOLUTION_RECIPES_DATA: EvolutionRecipe[] = [
 ];
 
 export const ANIME_CODES_DATA: AnimeCode[] = [
-  { id: 'code-origins2026', code: 'ORIGINS2026', reward: '500 Reroll Gems + 2x Monarch Trait Potions', status: 'ACTIVE', dateAdded: '' },
-  { id: 'code-monarch', code: 'SHADOWKING', reward: 'Free Epic Shadow Soldier + 25,000 Gold', status: 'ACTIVE', dateAdded: '' },
-  { id: 'code-subtoanime', code: 'SUB2ORIGINS', reward: '300 Gems + 10x Trait Dice', status: 'ACTIVE', dateAdded: '' },
-  { id: 'code-gojoupdate', code: 'HONOREDONE', reward: '5x Evolution Shards', status: 'ACTIVE', dateAdded: '' },
-  { id: 'code-gear5hype', code: 'WARRIOROFFREEDOM', reward: '1,000 Gems', status: 'ACTIVE', dateAdded: '' },
-  { id: 'code-release', code: 'RELEASE', reward: '250 Gems + 10,000 Gold', status: 'ACTIVE', dateAdded: '' }
+  { id: 'code-100k', code: '100K!', reward: '25 Trait Rerolls, 1,000 Gems, 10 Perfect Stat Prisms, 10 Stat Prisms', status: 'ACTIVE', dateAdded: '' },
+  { id: 'code-happypatch', code: 'HappyPatch!', reward: '25 Trait Rerolls, 1,000 Gems, 10 Perfect Stat Prisms, 10 Stat Prisms (some outlets list smaller values — test in game)', status: 'ACTIVE', dateAdded: '' },
+  { id: 'code-challenges', code: 'ChallengesFixed', reward: '10 Trait Rerolls, 750 Gems, 10 Azure Remnant, 5 Violet Remnant, 2 Radiant Remnant, 1 Prismatic Remnant', status: 'ACTIVE', dateAdded: '' },
+  { id: 'code-thankyou', code: 'THANKYOU!', reward: 'Expired — reward not documented by the publisher', status: 'EXPIRED', dateAdded: '' },
+  { id: 'code-tykaito', code: 'TYKaito!', reward: '25 Trait Rerolls, 5 Stat Prisms, 1,000 Gems', status: 'EXPIRED', dateAdded: '' },
+  { id: 'code-gamespeed', code: 'GAMESPEED', reward: '10 Trait Rerolls and 10 Perfect Stat Prisms', status: 'EXPIRED', dateAdded: '' }
 ];
