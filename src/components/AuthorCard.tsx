@@ -7,17 +7,17 @@ export default function AuthorCard() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-indigo-600 flex items-center justify-center text-white font-black text-lg shadow-lg shadow-cyan-500/20">
-            AO
+            H
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-bold text-white text-sm sm:text-base">OriginsSensei_Ken</span>
+              <span className="font-bold text-white text-sm sm:text-base">Hlele</span>
               <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full">
-                <ShieldCheck className="w-3 h-3" /> Infinity Tower Clear
+                <ShieldCheck className="w-3 h-3" /> Editor
               </span>
             </div>
             <p className="text-xs text-cyan-300">
-              Roblox Anime Origins Meta Analyst & Trait Theorycrafter • 800+ Raid Waves Cleared
+              AI-assisted research, human-reviewed
             </p>
           </div>
         </div>
@@ -35,7 +35,7 @@ export default function AuthorCard() {
       </div>
 
       <p className="text-xs text-cyan-400/80 mt-3 pt-3 border-t border-cyan-900/40 leading-relaxed">
-        <strong>Review Methodology:</strong> Unit tiers, trait tables and roll odds are cross-checked against published sources (Beebom, Pro Game Guides, IGN, Destructoid) — last verified 2026-09-19. Undocumented values are marked "not documented" instead of guessed.
+        <strong>Review Methodology:</strong> All data is cross-verified from multiple sources — last verified 2026-09-19. Unverified values are explicitly labeled instead of guessed.
       </p>
     </div>
   );

@@ -49,6 +49,7 @@ export default function RootLayout({
         </main>
         <footer className="border-t border-slate-800 bg-slate-950 py-8 text-center text-xs text-slate-500">
           <p>© 2026 Anime Origins Wiki — Part of <a href="https://robloxwikihub.com" className="underline hover:text-slate-400">Roblox Wiki Hub Network</a>. Unofficial guide.</p>
+          <p className="mt-2">Content AI-assisted, human-reviewed · Data sources cited on page · Contact: lianlele168@gmail</p>
         </footer>
       </body>
     </html>
