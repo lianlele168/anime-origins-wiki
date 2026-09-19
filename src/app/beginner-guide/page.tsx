@@ -1,36 +1,48 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Anime Origins Beginner Guide & Progression Tips ',
-  description: 'Essential starter walkthrough for Anime Origins on Roblox. Learn unit summon strategies, trait prioritization, and rapid level progression.',
+  title: 'Anime Origins Beginner Guide & Progression Tips',
+  description: 'Verified Anime Origins starter guide: save Gems before summoning, reroll traits at the Areas NPC, use Bluma for Infinite Mode income, and redeem codes at Level 10.',
   alternates: {
     canonical: '/beginner-guide',
   },
-  keywords: ['anime origins beginner guide', 'anime origins tips', 'anime origins walkthrough'],
+  keywords: ['anime origins beginner guide', 'anime origins tips', 'anime origins trait reroll guide'],
+};
+
+const tips = [
+  { step: "1", title: "Save Gems Before Summoning", desc: "Units come from Gem summoning. Beebom's core advice: bank your Gems and spend them in focused sessions — scattered pulls land you D-tier low-rarity units fast.", icon: "💎" },
+  { step: "2", title: "Reroll Traits at the Areas NPC", desc: "Open the right-side menu → Areas → Trait Reroll and walk to the NPC. Each unit can hold 2 traits but only 1 is active. Rerolls come from playing, missions and codes.", icon: "🎲" },
+  { step: "3", title: "Know Which Traits to Keep", desc: "Beebom's trait tier list: S+ = Immortal / Ascendant / Overseer, S = Rupture / Stride / Decay, A = Ace / Head Hunter / Fury III / Haste III. Common Rare rolls like Fury I (+5%) should be rerolled.", icon: "✨" },
+  { step: "4", title: "Redeem Codes at Level 10", desc: "Codes unlock at Level 10 via the Codes button (right-side menu) and are case-sensitive — 100K! needs the exclamation mark. Codes drop Trait Rerolls, Gems and Stat Prisms.", icon: "🎁" },
+  { step: "5", title: "Build an Economy Core for Infinite Mode", desc: "Bluma (Data Analyst) reaches +30% Income with Training Data and Leorio refunds part of his upgrade cost — the backbone of Infinite Mode farming lineups.", icon: "📈" },
+  { step: "6", title: "Respect Placement Limits", desc: "Powerful setups have placement caps (for example a unit with the Immortal trait is limited to 1 placement and 1 per team). Diversify your lineup instead of stacking copies.", icon: "⬆️" },
+];
+
+const faqs = [
+  { q: "What is the best unit in Anime Origins?", a: "Beebom's August 2026 tier list puts Madaro (Edo Tensei), Cursed Lover (Pure Love) and Valcrad (Unleashed) in SS tier. Careful with the spellings: Goki (Goku parody, A-tier boss killer) and Goju (Gojo parody, S+ controller) are two different units." },
+  { q: "How do traits work in Anime Origins?", a: "Traits are stat modifiers gained through Trait Rerolls. Each unit stores 2 traits but only 1 is active at a time. The strongest are Immortal (Secret), Ascendant and Overseer (S+ tier), followed by Rupture, Stride and Decay. There is no 'Monarch' or 'Godly' trait in this game — those belong to other Roblox anime games." },
+  { q: "How do I get more Trait Rerolls?", a: "Playing the game, completing missions, and redeeming codes (100K! gives 25 Trait Rerolls). Codes require Level 10 and are case-sensitive." },
+  { q: "Can I play Anime Origins on mobile?", a: "Yes — Roblox is available on iOS and Android. All game features work the same on mobile." },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(f => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 export default function BeginnerGuidePage() {
-  const tips = [
-    { step: "1", title: "Pick Your Starter Unit", desc: "Choose a unit that fits your playstyle. Summoner types are best for beginners — high HP and AoE damage.", icon: "⚔️" },
-    { step: "2", title: "Reroll for a Good Trait", desc: "Before playing seriously, reroll your trait. Aim for at least Prodigy (2.5% chance) to get +35% EXP & Damage bonus.", icon: "🎲" },
-    { step: "3", title: "Join a Server & Co-op", desc: "Anime Origins is easier in a full server. More players = more boss damage dealt = faster XP farming runs.", icon: "👥" },
-    { step: "4", title: "Complete the Daily Missions", desc: "Daily missions give the most Gems per hour. Always finish them before grinding story stages.", icon: "📋" },
-    { step: "5", title: "Save Gems for Limited Units", desc: "Limited units (banners) have massively better base stats than standard pulls. Don't spend on standard rolls.", icon: "💎" },
-    { step: "6", title: "Evolve Your Main Unit ASAP", desc: "Check the Evolution Guide — evolving a unit doubles their stats. You only need common materials from early stages.", icon: "⬆️" },
-  ];
-
-  const faqs = [
-    { q: "What is the best starter unit in Anime Origins?", a: "Any S-tier unit from your starting roll. If none, reroll. Check our Tier List for current meta picks." },
-    { q: "How do I get more Trait Reroll Coins?", a: "Daily missions, boss raids, and active redeem codes are your best sources. Use our Trait Simulator to plan rolls." },
-    { q: "How do traits work?", a: "Traits give permanent stat multipliers. Monarch (+150% DMG) and Godly (+100% DMG) are the best. You can reroll traits with Reroll Coins." },
-    { q: "Can I play Anime Origins on mobile?", a: "Yes — Roblox is available on iOS and Android. All game features work the same on mobile." },
-  ];
-
   return (
     <div className="space-y-10">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       <div className="border-b border-slate-800 pb-4">
         <h1 className="text-3xl font-black text-white">Anime Origins Beginner Guide</h1>
-        <p className="text-slate-400 text-sm mt-1">Everything you need to know to start strong in Anime Origins — units, traits, and daily routines.</p>
+        <p className="text-slate-400 text-sm mt-1 max-w-3xl">Everything you need to start strong in Anime Origins — Gems, traits, codes and economy. Every tip below is verified against Beebom&apos;s August 2026 guides (checked 2026-09-19).</p>
       </div>
 
       <section className="space-y-4">
@@ -45,6 +57,16 @@ export default function BeginnerGuidePage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-xl font-bold text-white">⚔️ Who to Actually Use Early On</h2>
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-sm text-slate-300 space-y-2 leading-relaxed">
+          <p><strong className="text-white">Sosuke (Eternal)</strong> is the standard C-tier transition Ground unit — fine for the story, replace it the moment you pull better.</p>
+          <p><strong className="text-white">Itsoda</strong> (best Legendary) is a Hill unit that can hit flying enemies, and <strong className="text-white">Gyutari (Upper Moon)</strong> clears mobs with full AoE plus poison and Blood Cut explosions.</p>
+          <p>For bosses, <strong className="text-white">Goki (Super 3)</strong> stacks Fighting Spirit for damage and crit — one of the best boss killers even at A tier.</p>
+          <p>For money, <strong className="text-white">Bluma (Data Analyst)</strong> eventually grants +30% Income — the core of Infinite Mode farming.</p>
         </div>
       </section>
 

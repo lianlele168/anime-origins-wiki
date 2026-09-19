@@ -93,7 +93,7 @@ export default function HomeClient() {
         <a href="/trait-simulator" className="group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-yellow-700/50 rounded-2xl p-6 space-y-3 transition-all duration-200 hover:-translate-y-1">
           <div className="text-3xl">🎲</div>
           <h2 className="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors">Trait Reroll Simulator</h2>
-          <p className="text-xs text-slate-400 leading-relaxed">Test your luck! Simulate rolling for Monarch (0.1%), Godly (0.25%), and Celestial (0.8%) traits.</p>
+          <p className="text-xs text-slate-400 leading-relaxed">Test your luck! Simulate rerolling for Ascendant (19%), Overseer (4.1%) and Rupture (12.5%) traits with real documented odds.</p>
           <span className="text-xs text-yellow-400 font-semibold">Try simulator →</span>
         </a>
       </section>
@@ -116,7 +116,7 @@ export default function HomeClient() {
             {copied === '100K!' ? '✓ Copied!' : 'Copy'}
           </button>
         </div>
-        <p className="text-xs text-slate-500">Rewards: Gems + Trait Reroll Coins</p>
+        <p className="text-xs text-slate-500">Rewards: Gems + Trait Rerolls + Stat Prisms (redeem at Level 10)</p>
       </section>
     </div>
   );

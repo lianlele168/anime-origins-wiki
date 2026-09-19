@@ -4,11 +4,11 @@ import CalculatorClient from './CalculatorClient';
 
 export const metadata: Metadata = {
   title: 'Anime Origins Unit DPS & Trait Calculator ',
-  description: 'Calculate unit damage, speed per attack (SPA), level progression, and trait multipliers in Anime Origins.',
+  description: 'Calculate Anime Origins trait value and reroll expectations — all 23 documented traits with real roll odds, stat packages, and expected reroll counts.',
   alternates: {
     canonical: '/calculator',
   },
-  keywords: ['anime origins dps calculator', 'anime origins unit damage', 'anime origins monarch trait stats'],
+  keywords: ['anime origins trait calculator', 'anime origins reroll odds', 'anime origins trait tier list'],
 };
 
 export default function CalculatorPage() {

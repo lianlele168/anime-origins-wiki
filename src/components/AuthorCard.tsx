@@ -29,13 +29,13 @@ export default function AuthorCard() {
           </div>
           <div className="flex items-center gap-1 bg-cyan-900/50 px-2.5 py-1 rounded-lg border border-cyan-800/40">
             <UserCheck className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Verified for Patch v2.0 (Shadow Monarch)</span>
+            <span>Verified for UPD1 update (Sep 2026)</span>
           </div>
         </div>
       </div>
 
       <p className="text-xs text-cyan-400/80 mt-3 pt-3 border-t border-cyan-900/40 leading-relaxed">
-        <strong>Review Methodology:</strong> Unit DPS tables, trait reroll probability curves, and evolution recipe costs are derived from live game client datamines and verified server testing.
+        <strong>Review Methodology:</strong> Unit tiers, trait tables and roll odds are cross-checked against published sources (Beebom, Pro Game Guides, IGN, Destructoid) — last verified 2026-09-19. Undocumented values are marked "not documented" instead of guessed.
       </p>
     </div>
   );

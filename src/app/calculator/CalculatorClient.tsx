@@ -2,32 +2,45 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import AuthorCard from "@/components/AuthorCard";
-import { ANIME_UNITS_DATA, UNIT_TRAITS_DATA } from "@/data/wikiData";
-import { Calculator, Sparkles, Swords, Zap } from "lucide-react";
+import { UNIT_TRAITS_DATA } from "@/data/wikiData";
+import { Calculator, Sparkles, Dices, TrendingUp } from "lucide-react";
+
+const RARITY_COLORS: Record<string, string> = {
+  Secret: "text-amber-300 border-amber-500/50 bg-amber-950/40",
+  Mythic: "text-fuchsia-300 border-fuchsia-500/50 bg-fuchsia-950/40",
+  Legendary: "text-cyan-300 border-cyan-500/50 bg-cyan-950/40",
+  Epic: "text-emerald-300 border-emerald-500/50 bg-emerald-950/40",
+  Rare: "text-slate-300 border-slate-600/50 bg-slate-900",
+};
+
+function parseChance(chance: string): number {
+  const m = chance.match(/([\d.]+)\s*%/);
+  return m ? parseFloat(m[1]) : 0;
+}
 
 export default function CalculatorClient() {
-  const [selectedUnitIdx, setSelectedUnitIdx] = useState(0);
-  const [selectedTraitIdx, setSelectedTraitIdx] = useState(0);
-  const [unitLevel, setUnitLevel] = useState(50);
+  const [selectedIdx, setSelectedIdx] = useState(0);
+  const trait = UNIT_TRAITS_DATA[selectedIdx] || UNIT_TRAITS_DATA[0];
 
-  const unit = ANIME_UNITS_DATA[selectedUnitIdx] || ANIME_UNITS_DATA[0];
-  const trait = UNIT_TRAITS_DATA[selectedTraitIdx] || UNIT_TRAITS_DATA[0];
+  const pct = (s: string) => {
+    const m = s.match(/-?([\d.]+)\s*%/);
+    return m ? parseFloat(m[1]) : 0;
+  };
 
-  const traitMult = trait.damageBonus.includes("+150%")
-    ? 2.5
-    : trait.damageBonus.includes("+100%")
-    ? 2.0
-    : trait.damageBonus.includes("+60%")
-    ? 1.6
-    : trait.damageBonus.includes("+35%")
-    ? 1.35
-    : trait.damageBonus.includes("+10%")
-    ? 1.1
-    : 1.0;
+  const dmg = pct(trait.damageBonus);
+  const cd = pct(trait.cooldownBonus); // positive value = reduction
+  const range = pct(trait.rangeBonus);
 
-  const levelMult = 1 + (unitLevel - 1) * 0.02; // +2% per level
-  const totalDamage = Math.round(unit.damage * levelMult * traitMult);
-  const dps = Math.round(totalDamage / unit.spa);
+  // Real math from documented trait numbers:
+  // throughput index = damage multiplier / remaining cooldown fraction
+  const dmgMult = 1 + dmg / 100;
+  const cdMult = cd > 0 ? 1 - cd / 100 : 1 + Math.abs(cd) / 100;
+  const throughput = dmgMult / cdMult;
+
+  const chanceNum = parseChance(trait.chance);
+  const expectedRolls = chanceNum > 0 ? Math.ceil(100 / chanceNum) : 0;
+
+  const topTraits = UNIT_TRAITS_DATA.filter(t => t.traitTier);
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -35,18 +48,18 @@ export default function CalculatorClient() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "What is the best trait to roll for in Anime Origins?",
+        name: "What is the best trait in Anime Origins?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Monarch (0.1% chance) is the undisputed top trait, providing +150% damage and +20% attack range.",
+          text: "Per Beebom's trait tier list, the S+ traits are Immortal (Secret), Ascendant (19%, +35% boss damage) and Overseer (4.1%, +20% damage with 30% true damage on every attack).",
         },
       },
       {
         "@type": "Question",
-        name: "How does unit level affect total damage in Anime Origins?",
+        name: "How many rerolls does a Mythic trait take in Anime Origins?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Each unit level increases base damage by approximately 2% compounding, reaching up to 3x base stats at Level 100 max cap.",
+          text: "On documented drop rates, Overseer (4.1%) takes about 25 rerolls on average, Rupture (12.5%) about 8, and Ascendant (19%) about 6. Each unit holds 2 traits but only 1 is active.",
         },
       },
     ],
@@ -55,36 +68,26 @@ export default function CalculatorClient() {
   const webAppSchema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "Anime Origins Unit DPS & Trait Calculator",
+    name: "Anime Origins Trait Reroll Expectation Calculator",
     applicationCategory: "GameApplication",
     operatingSystem: "Web",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   };
 
   return (
     <div className="space-y-8 max-w-5xl mx-auto py-8 px-4 sm:px-6">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
 
       <div className="border-b border-cyan-900/60 pb-5 text-center sm:text-left">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-700/50 text-cyan-300 text-xs font-semibold mb-3">
-          <Calculator className="w-3.5 h-3.5" /> Interactive Theorycrafter
+          <Calculator className="w-3.5 h-3.5" /> Trait Reroll Planner
         </div>
-        <h1 className="text-3xl sm:text-4xl font-black text-white">
-          Unit DPS & Trait Synergy Calculator
-        </h1>
+        <h1 className="text-3xl sm:text-4xl font-black text-white">Trait Reroll &amp; Odds Calculator</h1>
         <p className="text-slate-300 text-sm mt-2 max-w-2xl">
-          Simulate unit scaling, level caps, and trait multipliers to find the highest DPS setups for Raids and Infinite Mode.
+          All 23 documented traits with their real roll odds from Beebom&apos;s trait table. Compare stat
+          packages and see the expected number of rerolls before a trait lands. Rerolls happen at the
+          Areas → Trait Reroll NPC.
         </p>
       </div>
 
@@ -95,106 +98,102 @@ export default function CalculatorClient() {
         <div className="space-y-5">
           <div className="bg-slate-900/90 border border-cyan-900/60 rounded-2xl p-6 space-y-4">
             <h2 className="text-base font-bold text-white flex items-center gap-2">
-              <Swords className="w-4 h-4 text-cyan-400" /> 1. Select Anime Champion
+              <Sparkles className="w-4 h-4 text-yellow-400" /> 1. Pick a Trait
             </h2>
             <select
-              value={selectedUnitIdx}
-              onChange={(e) => setSelectedUnitIdx(Number(e.target.value))}
-              className="w-full bg-slate-950 border border-cyan-800/60 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-500"
-            >
-              {ANIME_UNITS_DATA.map((u, idx) => (
-                <option key={u.id} value={idx}>
-                  {u.name} ({u.rarity} - {u.anime})
-                </option>
-              ))}
-            </select>
-            <div className="text-xs text-slate-400 flex justify-between">
-              <span>Base DMG: <strong className="text-emerald-400">{unit.damage}</strong></span>
-              <span>SPA: <strong className="text-cyan-300">{unit.spa}s</strong></span>
-              <span>Element: <strong className="text-amber-300">{unit.element}</strong></span>
-            </div>
-          </div>
-
-          <div className="bg-slate-900/90 border border-cyan-900/60 rounded-2xl p-6 space-y-4">
-            <h2 className="text-base font-bold text-white flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-yellow-400" /> 2. Rolled Trait
-            </h2>
-            <select
-              value={selectedTraitIdx}
-              onChange={(e) => setSelectedTraitIdx(Number(e.target.value))}
+              value={selectedIdx}
+              onChange={(e) => setSelectedIdx(Number(e.target.value))}
               className="w-full bg-slate-950 border border-cyan-800/60 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-500"
             >
               {UNIT_TRAITS_DATA.map((t, idx) => (
                 <option key={t.id} value={idx}>
-                  {t.name} ({t.damageBonus} DMG, Rate: {t.rarityRate})
+                  {t.name} — {t.chance} ({t.rarity})
                 </option>
               ))}
             </select>
-            <div className="text-xs text-slate-400">
-              Trait Effect: <strong className="text-indigo-300">{trait.description}</strong>
-            </div>
+            <p className="text-xs text-slate-400 leading-relaxed">{trait.description}</p>
           </div>
 
           <div className="bg-slate-900/90 border border-cyan-900/60 rounded-2xl p-6 space-y-3">
-            <div className="flex justify-between text-sm">
-              <span className="font-bold text-white">3. Champion Level</span>
-              <span className="font-mono text-cyan-400 font-bold">Level {unitLevel}</span>
+            <h2 className="text-base font-bold text-white flex items-center gap-2">
+              <TrendingUp className="w-4 h-4 text-emerald-400" /> 2. Stat Package (documented)
+            </h2>
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 flex justify-between"><span className="text-slate-400">Damage</span><strong className="text-emerald-400">{trait.damageBonus}</strong></div>
+              <div className="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 flex justify-between"><span className="text-slate-400">Range</span><strong className="text-cyan-300">{trait.rangeBonus}</strong></div>
+              <div className="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 flex justify-between"><span className="text-slate-400">Cooldown</span><strong className="text-indigo-300">{trait.cooldownBonus}</strong></div>
+              <div className="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 flex justify-between"><span className="text-slate-400">Rarity</span><strong className="text-fuchsia-300">{trait.rarity}</strong></div>
             </div>
-            <input
-              type="range"
-              min={1}
-              max={100}
-              value={unitLevel}
-              onChange={(e) => setUnitLevel(Number(e.target.value))}
-              className="w-full accent-cyan-500 bg-slate-950 cursor-pointer"
-            />
+            <div className="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs flex justify-between"><span className="text-slate-400">Special</span><strong className="text-amber-300 text-right">{trait.extra}</strong></div>
+            <div className="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs flex justify-between">
+              <span className="text-slate-400">Throughput index (DMG × attack rate)</span>
+              <strong className="text-emerald-300">{throughput.toFixed(2)}x</strong>
+            </div>
           </div>
         </div>
 
-        {/* Results & Visuals */}
+        {/* Results */}
         <div className="space-y-6">
           <div className="bg-gradient-to-br from-cyan-950/80 to-slate-950 border border-cyan-500/40 rounded-2xl p-6 space-y-4">
-            <h2 className="text-xs font-black uppercase tracking-wider text-cyan-400">
-              Total Calculated Combat Power
+            <h2 className="text-xs font-black uppercase tracking-wider text-cyan-400 flex items-center gap-2">
+              <Dices className="w-4 h-4" /> Expected Rerolls Until This Trait Lands
             </h2>
             <div className="flex items-baseline gap-2">
-              <span className="text-4xl sm:text-5xl font-black text-white font-mono">{dps.toLocaleString()}</span>
-              <span className="text-sm font-sans font-medium text-slate-400">DPS</span>
+              <span className="text-4xl sm:text-5xl font-black text-white font-mono">{expectedRolls > 0 ? expectedRolls : "—"}</span>
+              <span className="text-sm text-slate-400">rerolls (average)</span>
             </div>
             <div className="pt-3 border-t border-cyan-900/60 space-y-2 text-xs text-slate-300">
-              <div className="flex justify-between">
-                <span>Single Hit Strike Damage:</span>
-                <span className="font-bold text-yellow-300 font-mono">{totalDamage.toLocaleString()}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Total Combined Multiplier:</span>
-                <span className="font-bold text-cyan-300">{(traitMult * levelMult).toFixed(2)}x</span>
-              </div>
+              <div className="flex justify-between"><span>Roll chance</span><span className="font-bold text-yellow-300 font-mono">{trait.chance}</span></div>
+              <div className="flex justify-between"><span>Beebom trait tier</span><span className="font-bold text-cyan-300">{trait.traitTier ?? "unranked"}</span></div>
             </div>
+            <p className="text-[11px] text-slate-500 leading-relaxed">
+              Math: expected value = 1 ÷ roll chance, rounded up. Actual results vary — this is a planning
+              estimate, not a guarantee.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="rounded-xl overflow-hidden border border-cyan-900/60 bg-cyan-950/30 p-2">
-              <Image
-                src="/images/origins-header.webp"
-                alt="Anime Origins Official Game Icon"
-                width={512}
-                height={512}
-                className="rounded-lg object-cover w-full h-36"
-              />
-              <p className="text-[11px] text-cyan-300 text-center mt-1.5 font-medium">Official Game Icon</p>
-            </div>
-            <div className="rounded-xl overflow-hidden border border-cyan-900/60 bg-cyan-950/30 p-2">
-              <Image
-                src="/images/origins-gameplay.webp"
-                alt="Anime Origins Combat Gameplay"
-                width={768}
-                height={432}
-                className="rounded-lg object-cover w-full h-36"
-              />
-              <p className="text-[11px] text-cyan-300 text-center mt-1.5 font-medium">Anime Battle Arena</p>
-            </div>
+          <div className="rounded-xl overflow-hidden border border-cyan-900/60 bg-cyan-950/30 p-2">
+            <Image
+              src="/images/origins-gameplay.webp"
+              alt="Anime Origins Combat Gameplay"
+              width={768}
+              height={432}
+              className="rounded-lg object-cover w-full h-36"
+            />
+            <p className="text-[11px] text-cyan-300 text-center mt-1.5 font-medium">Anime Battle Arena</p>
           </div>
+        </div>
+      </div>
+
+      {/* Ranked comparison table */}
+      <div className="bg-slate-900/90 border border-cyan-900/60 rounded-2xl p-6 space-y-4">
+        <h2 className="text-base font-bold text-white">Ranked Traits — Expected Rerolls (S+ / S / A tier)</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs min-w-[540px]">
+            <thead>
+              <tr className="text-slate-400 border-b border-slate-800">
+                <th className="py-2 pr-3">Trait</th>
+                <th className="py-2 pr-3">Tier</th>
+                <th className="py-2 pr-3">Chance</th>
+                <th className="py-2 pr-3">Avg. Rerolls</th>
+                <th className="py-2">Key Effect</th>
+              </tr>
+            </thead>
+            <tbody>
+              {topTraits.map(t => {
+                const c = parseChance(t.chance);
+                return (
+                  <tr key={t.id} className="border-b border-slate-800/60">
+                    <td className="py-2 pr-3 font-semibold text-white whitespace-nowrap">{t.name}</td>
+                    <td className="py-2 pr-3"><span className={`px-2 py-0.5 rounded-full border ${RARITY_COLORS[t.rarity]}`}>{t.traitTier}</span></td>
+                    <td className="py-2 pr-3 text-slate-300">{t.chance}</td>
+                    <td className="py-2 pr-3 font-mono text-cyan-300">{c > 0 ? Math.ceil(100 / c) : "—"}</td>
+                    <td className="py-2 text-slate-400">{t.extra === "—" ? `${t.damageBonus} DMG, ${t.rangeBonus} RNG, ${t.cooldownBonus} CD` : t.extra}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

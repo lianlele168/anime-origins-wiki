@@ -1,64 +1,78 @@
 import type { Metadata } from 'next';
+import { EVOLUTION_FORMS_DATA } from '@/data/wikiData';
 
 export const metadata: Metadata = {
-  title: 'Anime Origins Evolution Guide & Unit Recipes ',
-  description: 'All unit evolution recipes, material requirements, and stat boosts in Anime Origins. How to evolve Cursed Lover to Cursed Overlord and more.',
+  title: 'Anime Origins Evolution & Awakened Forms Guide',
+  description: 'All confirmed Anime Origins advanced forms — Valcrad (Unleashed), Madaro (Edo Tensei), Konpatchi (Unleashed) and Igritto (Commander Starku) — with documented mechanics. Evolution materials are not yet documented by sources.',
   alternates: {
     canonical: '/evolution-guide',
   },
-  keywords: ['anime origins evolution guide', 'anime origins recipes', 'how to evolve units anime origins'],
+  keywords: ['anime origins evolution guide', 'anime origins awakened forms', 'anime origins valcrad unleashed', 'anime origins madaro edo tensei'],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How do you evolve units in Anime Origins?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Anime Origins units have advanced/awakened form names such as Valcrad (Unleashed), Konpatchi (Unleashed) and Madaro (Edo Tensei), and Valcrad has Restriction levels that unlock progressively. However, no major source (Beebom, Pro Game Guides, IGN, Destructoid) has documented the exact evolution materials or steps yet, so we will not publish a recipe until it is verified.',
+      },
+    },
+  ],
 };
 
 export default function EvolutionGuidePage() {
-  const recipes = [
-    { unit: "Cursed Lover", evolved: "Cursed Overlord", mats: ["Cursed Core x3", "Shadow Shard x5", "Demon Essence x1"], statBoost: "+110% DMG, +80% HP", tier: "S+" },
-    { unit: "Madaro", evolved: "Madaro Unleashed", mats: ["Flame Crystal x5", "Ember Core x2", "Phoenix Feather x1"], statBoost: "+95% DMG, +60% SPD", tier: "S" },
-    { unit: "Storm Blade", evolved: "Tempest Edge", mats: ["Wind Stone x4", "Thunder Gem x3"], statBoost: "+70% DMG, +40% ATK SPD", tier: "A" },
-    { unit: "Iron Guard", evolved: "Titan Guard", mats: ["Steel Plate x6", "Mana Crystal x2"], statBoost: "+50% HP, +90% DEF", tier: "A" },
-  ];
-
   return (
     <div className="space-y-8">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       <div className="border-b border-slate-800 pb-4">
-        <h1 className="text-3xl font-black text-white">Anime Origins Evolution Guide</h1>
-        <p className="text-slate-400 text-sm mt-1">All unit evolution recipes, material farming locations, and stat boost comparisons.</p>
+        <h1 className="text-3xl font-black text-white">Anime Origins Evolution &amp; Awakened Forms</h1>
+        <p className="text-slate-400 text-sm mt-1 max-w-3xl">
+          Anime Origins units have advanced and awakened forms (for example Madaro (Edo Tensei) or
+          Konpatchi (Unleashed)). This page lists only what published sources actually confirm.
+        </p>
       </div>
 
       <div className="bg-amber-950/30 border border-amber-800/40 rounded-xl p-4 text-sm text-amber-200">
-        💡 <strong>Tip:</strong> Evolving a unit resets their level to 1 but doubles base stats. Always evolve your main DPS unit before tackling Stage 20+.
+        ⚠️ <strong>Honesty notice:</strong> the specific evolution materials, gold costs and step-by-step
+        recipes are <strong>not documented</strong> by any major source yet (checked 2026-09-19). Any site
+        listing exact material counts is guessing. We will add recipes here as soon as they are verified.
       </div>
 
       <div className="space-y-4">
-        {recipes.map((r, i) => (
-          <div key={i} className="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-4">
-            <div className="flex items-center justify-between">
+        {EVOLUTION_FORMS_DATA.map(f => (
+          <div key={f.id} className="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
-                <span className="text-slate-400 text-sm">{r.unit}</span>
+                <span className="text-slate-400 text-sm">{f.unit}</span>
                 <span className="mx-2 text-slate-600">→</span>
-                <span className="text-white font-bold text-lg">{r.evolved}</span>
+                <span className="text-white font-bold text-lg">{f.advancedForm}</span>
               </div>
-              <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-amber-950 text-amber-300 border border-amber-700/50">{r.tier} Tier</span>
+              <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-600/50">Materials: {f.materials}</span>
             </div>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <div className="text-xs text-slate-500 uppercase tracking-wider mb-2 font-semibold">Materials Required</div>
-                <div className="space-y-1.5">
-                  {r.mats.map((m, j) => (
-                    <div key={j} className="text-xs bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-300 flex items-center gap-2">
-                      <span className="text-amber-400">◆</span> {m}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <div className="text-xs text-slate-500 uppercase tracking-wider mb-2 font-semibold">Stat Boost After Evolution</div>
-                <div className="bg-emerald-950/40 border border-emerald-800/40 rounded-lg p-3 text-emerald-300 text-sm font-semibold">
-                  {r.statBoost}
-                </div>
+            <div>
+              <div className="text-xs text-slate-500 uppercase tracking-wider mb-2 font-semibold">What sources confirm</div>
+              <div className="bg-emerald-950/40 border border-emerald-800/40 rounded-lg p-3 text-emerald-200 text-sm leading-relaxed">
+                {f.documented}
               </div>
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 text-xs text-slate-400 leading-relaxed">
+        <p className="font-semibold text-slate-300 mb-1">Mechanics around advanced forms that ARE confirmed</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Valcrad (Unleashed) grows through &quot;Restriction levels&quot; during a match — gaining crit, range, bonus damage against bleeding enemies and summons.</li>
+          <li>Madaro (Edo Tensei) is the SS-tier awakened state with the 500% Heaven Splitter attack and CC resistance.</li>
+          <li>Placement limits apply to powerful forms — for example the Immortal trait hard-caps its unit at 1 placement.</li>
+          <li>Units have placement slots, upgrade costs and stock mechanics (Leorio refunds part of his upgrade cost).</li>
+        </ul>
       </div>
     </div>
   );
