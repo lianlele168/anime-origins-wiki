@@ -29,13 +29,13 @@ export default function AuthorCard() {
           </div>
           <div className="flex items-center gap-1 bg-cyan-900/50 px-2.5 py-1 rounded-lg border border-cyan-800/40">
             <UserCheck className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Verified for UPD1 update (Sep 2026)</span>
+            <span>UPD1 update (Sep 2026)</span>
           </div>
         </div>
       </div>
 
       <p className="text-xs text-cyan-400/80 mt-3 pt-3 border-t border-cyan-900/40 leading-relaxed">
-        <strong>Review Methodology:</strong> All data is cross-verified from multiple sources — last verified 2026-09-19. Unverified values are explicitly labeled instead of guessed.
+        <strong>Review Methodology:</strong> All data is cross-verified from multiple sources — last checked 2026-09-19. Unverified values are explicitly labeled instead of guessed.
       </p>
     </div>
   );
