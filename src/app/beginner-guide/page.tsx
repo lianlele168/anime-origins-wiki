@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Anime Origins Beginner Guide & Progression Tips',
-  description: 'Verified Anime Origins starter guide: save Gems before summoning, reroll traits at the Areas NPC, use Bluma for Infinite Mode income, and redeem codes at Level 10.',
+  description: 'Anime Origins starter guide: save Gems before summoning, reroll traits at the Areas NPC, use Bluma for Infinite Mode income, and redeem codes at Level 10.',
   alternates: {
     canonical: '/beginner-guide',
   },
